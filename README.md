@@ -12,7 +12,7 @@ https://github.com/Ninagawa123/roid1_urdf
 - pybullet  3.0.9
 
 ## 執行
-./python python .\robotUi.py
+./python .\robotUi.py
 
 ### 按鍵控制
 - up：畫面向上移動
@@ -20,3 +20,4 @@ https://github.com/Ninagawa123/roid1_urdf
 - left：畫面向左移動
 - right：畫面向右移動
 - PgUp/PgDn：畫面放大縮小
+- F12 : 顯示或關閉馬達表格
