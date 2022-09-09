@@ -14,7 +14,7 @@ https://github.com/Ninagawa123/roid1_urdf
 ## 執行
 ./python .\robotUi.py
 
-### 按鍵控制
+### 按鍵畫面視角
 - up：畫面向上移動
 - down：畫面向下移動
 - left：畫面向左移動
