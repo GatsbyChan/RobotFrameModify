@@ -1,0 +1,526 @@
+<?xml version="1.0"?>
+
+<robot name="roid1">
+
+  <material name="dark_gray">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <material name="light_gray">
+    <color rgba="0.8 0.8 0.8 1.0"/>
+  </material>
+  <material name="light_blue">
+    <color rgba="0.3 0.5 1.0 1.0"/>
+  </material>
+  <material name="orange">
+    <color rgba="1.0 0.3 0.1 1.0"/>
+  </material>
+
+
+  <!--base link: origin of this model(0,0,0) -->
+  <link name="base_link">
+  </link>
+
+
+  <!--center of body-->
+  
+  <!--waist-->
+  <joint name="c_waist_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="c_waist"/>
+    <origin xyz="0 0 0.278106"/>
+  </joint>
+  <link name="c_waist">
+    <visual>
+      <geometry>
+        <mesh filename="c_waist.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray"/>
+    </visual>
+  </link>
+
+  <!--chest-->
+  <joint name="c_chest_yaw" type="revolute">
+    <parent link="c_waist"/>
+    <child link="c_chest"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0.065192"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="c_chest">
+    <visual>
+      <geometry>
+        <mesh filename="c_chest_a.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray"/>
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="c_chest_b.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray"/>
+    </visual>
+  </link>
+
+  <!--head-->
+  <joint name="c_head_yaw" type="revolute">
+    <parent link="c_chest"/>
+    <child link="c_head" />
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0.039505"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="c_head">
+    <visual>
+      <geometry>
+        <mesh filename="c_head_a.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray" />
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="c_head_b.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_blue"/>
+    </visual>
+  </link>
+
+
+  <!--right side upper body-->
+
+  <!--r_shoulder_pitch-->
+  <joint name="r_shoulder_pitch" type="revolute">
+    <parent link="c_chest"/>
+    <child link="r_shoulder" />
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 -0.074375 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_shoulder">
+    <visual>
+      <geometry>
+        <mesh filename="r_shoulder.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray">
+          <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="shoulderpoint.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="orange"/>
+    </visual>
+  </link>
+
+  <!--r_shoulder_roll-->
+  <joint name="r_shoulder_roll" type="revolute">
+    <parent link="r_shoulder"/>
+    <child link="r_uppararm"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0 0 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_uppararm">
+    <visual>
+      <geometry>
+        <mesh filename="r_upperarm.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+  <!--r_elbow_yaw-->
+  <joint name="r_elbow_yaw" type="revolute">
+    <parent link="r_uppararm"/>
+    <child link="r_elbow"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0.004449 0 -0.087511"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_elbow">
+    <visual>
+      <geometry>
+        <mesh filename="r_elbow.stl" />
+      </geometry>
+      <origin xyz="0.0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+  <!--r_elbow_pitch-->
+  <joint name="r_elbow_pitch" type="revolute">
+    <parent link="r_elbow"/>
+    <child link="r_lowerarm"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.004698 0 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_lowerarm">
+    <visual>
+      <geometry>
+        <mesh filename="r_lowerarm.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray"/>
+    </visual>
+  </link>
+
+
+
+  <!--left side upper body-->
+
+  <!--chest to l_shoulder-->
+  <joint name="l_shoulder_pitch" type="revolute">
+    <parent link="c_chest"/>
+    <child link="l_shoulder" />
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0.074375 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_shoulder">
+    <visual>
+      <geometry>
+        <mesh filename="l_shoulder.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray">
+          s<color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="shoulderpoint.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="orange"/>
+    </visual>
+  </link>
+
+  <!--l_shoulder_roll-->
+  <joint name="l_shoulder_roll" type="revolute">
+    <parent link="l_shoulder"/>
+    <child link="l_uppararm"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0 0 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_uppararm">
+    <visual>
+      <geometry>
+        <mesh filename="l_upperarm.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+  <!--l_elbow_yaw-->
+  <joint name="l_elbow_yaw" type="revolute">
+    <parent link="l_uppararm"/>
+    <child link="l_elbow"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0.004449 0 -0.087511"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_elbow">
+    <visual>
+      <geometry>
+        <mesh filename="l_elbow.stl" />
+      </geometry>
+      <origin xyz="0.0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+  <!--l_elbow_pitch-->
+  <joint name="l_elbow_pitch" type="revolute">
+    <parent link="l_elbow"/>
+    <child link="l_lowerarm"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.004698 0 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_lowerarm">
+    <visual>
+      <geometry>
+        <mesh filename="l_lowerarm.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray"/>
+    </visual>
+  </link>
+
+
+
+  <!--right side lower body-->
+
+  <!--r_hipjoint_yaw-->
+  <joint name="r_hipjoint_yaw" type="revolute">
+    <parent link="c_waist"/>
+    <child link="r_hipjointupper"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0.0 -0.021530 -0.044936"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_hipjointupper">
+    <visual>
+      <geometry>
+        <mesh filename="r_hipjointupper.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray" />
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="r_hipjointupperpoint.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="orange"/>
+    </visual>
+  </link>
+
+  <!--r_hipjoint_roll-->
+  <joint name="r_hipjoint_roll" type="revolute">
+    <parent link="r_hipjointupper"/>
+    <child link="r_hipjointlower"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0 0.004501 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_hipjointlower">
+    <visual>
+      <geometry>
+        <mesh filename="r_hipjointlower.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+  <!--r_hipjoint_pitch-->
+  <joint name="r_hipjoint_pitch" type="revolute">
+    <parent link="r_hipjointlower"/>
+    <child link="r_upperreg"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.004052 -0.011504 -0.038476"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_upperreg">
+    <visual>
+      <geometry>
+        <mesh filename="r_upperreg_a.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="r_upperreg_b.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray" />
+    </visual>
+  </link>
+
+  <!--r_knee_pitch-->
+  <joint name="r_knee_pitch" type="revolute">
+    <parent link="r_upperreg"/>
+    <child link="r_lowerreg"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.0 0.0 -0.065008"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_lowerreg">
+    <visual>
+      <geometry>
+        <mesh filename="r_lowerreg_a.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="r_lowerreg_b.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray" />
+    </visual>
+  </link>
+
+  <!--r_ankle_pitch-->
+  <joint name="r_ankle_pitch" type="revolute">
+    <parent link="r_lowerreg"/>
+    <child link="r_ankle"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.0 0.0 -0.065203"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="r_ankle">
+    <visual>
+      <geometry>
+        <mesh filename="r_ankle.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+  <!--r_ankle_roll-->
+  <joint name="r_ankle_roll" type="revolute">
+    <parent link="r_ankle"/>
+    <child link="foot_r"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 0.011404 -0.038550"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="foot_r">
+    <visual>
+      <geometry>
+        <mesh filename="r_foot.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+
+  <!--left side lower body-->
+
+  <!--l_hipjoint_yaw-->
+  <joint name="l_hipjoint_yaw" type="revolute">
+    <parent link="c_waist"/>
+    <child link="l_hipjointupper"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0.0 0.021530 -0.044936"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_hipjointupper">
+    <visual>
+      <geometry>
+        <mesh filename="l_hipjointupper.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray" />
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="l_hipjointupperpoint.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="orange"/>
+    </visual>
+  </link>
+
+  <!--l_hipjoint_roll-->
+  <joint name="l_hipjoint_roll" type="revolute">
+    <parent link="l_hipjointupper"/>
+    <child link="l_hipjointlower"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0 -0.004501 0"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_hipjointlower">
+    <visual>
+      <geometry>
+        <mesh filename="l_hipjointlower.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+  </link>
+
+  <!--l_hipjoint_pitch-->
+  <joint name="l_hipjoint_pitch" type="revolute">
+    <parent link="l_hipjointlower"/>
+    <child link="l_upperreg"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.004052 0.011504 -0.038476"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_upperreg">
+    <visual>
+      <geometry>
+        <mesh filename="l_upperreg_a.stl"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray" />
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="l_upperreg_b.stl"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray" />
+    </visual>
+  </link>
+
+  <!--l_knee_pitch-->
+  <joint name="l_knee_pitch" type="revolute">
+    <parent link="l_upperreg"/>
+    <child link="l_lowerreg"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.0 0.0 -0.065008"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_lowerreg">
+    <visual>
+      <geometry>
+        <mesh filename="l_lowerreg_a.stl"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray"/>
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="l_lowerreg_b.stl"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="light_gray"/>
+    </visual>
+  </link>
+
+  <!--l_ankle_pitch-->
+  <joint name="l_ankle_pitch" type="revolute">
+    <parent link="l_lowerreg"/>
+    <child link="l_ankle"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.0 0.0 -0.065203"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_ankle">
+    <visual>
+      <geometry>
+        <mesh filename="l_ankle.stl" />
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray"/>
+    </visual>
+  </link>
+
+  <!--l_ankle_roll-->
+  <joint name="l_ankle_roll" type="revolute">
+    <parent link="l_ankle"/>
+    <child link="l_foot"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 -0.011404 -0.038550"/>
+    <limit lower="-3" upper="3" effort="0" velocity="0"/>
+  </joint>
+  <link name="l_foot">
+    <visual>
+      <geometry>
+        <mesh filename="l_foot.stl"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="dark_gray"/>
+    </visual>
+  </link>
+
+</robot>
