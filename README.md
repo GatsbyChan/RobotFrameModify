@@ -3,6 +3,8 @@
 
 ## 內容 
 - 一個 pyqt5 與 pybullet 3 的應用。主要用於開發小型人型機器人的動作調整介面。
+- 程式中使用的機器人來源
+https://github.com/Ninagawa123/roid1_urdf
 
 ## 開發中使用的版本
 - python 3.7
