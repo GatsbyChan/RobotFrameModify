@@ -13,3 +13,10 @@ https://github.com/Ninagawa123/roid1_urdf
 
 ## 執行
 ./python python .\robotUi.py
+
+### 按鍵控制
+up：畫面向上移動
+down：畫面向下移動
+left：畫面向左移動
+right：畫面向右移動
+PgUp/PgDn：畫面放大縮小
